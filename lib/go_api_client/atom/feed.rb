@@ -19,12 +19,13 @@ module GoApiClient
           doc = Nokogiri::XML(http_fetcher.get_response_body(feed_url))
           pages_fetched += 1
           if pages_fetched > PAGE_FETCH_LIMIT
-            puts "=" * 80
+            puts "=" * 100
             puts ""
             puts "[GO WATCHDOG] not fetching past #{PAGE_FETCH_LIMIT} pages of the Go event feed."
-            puts "If there is no green build in those pages, Go Watchdog may not work properly.  Get your build green first!"
+            puts "If there is no green build in those pages, Go Watchdog may not work properly."
+            puts "Get your build green first!"
             puts ""
-            puts "=" * 80
+            puts "=" * 100
             break
           end
           feed_page = GoApiClient::Atom::FeedPage.new(doc.root).parse!
