@@ -5,6 +5,7 @@ module GoApiClient
 
     def setup
       stub_request(:get, "http://localhost:8153/go/api/pipelines/defaultPipeline/1.xml").to_return(:body => file_contents("pipelines_1.xml"))
+      stub_request(:get, "http://localhost:8153/go/api/pipelines/defaultPipeline/2.xml").to_return(:body => file_contents("pipelines_with_pipeline_materials.xml"))
     end
 
     test "should fetch the pipeline xml and populate itself" do
@@ -28,6 +29,15 @@ module GoApiClient
 
       pipeline.stages << OpenStruct.new(:authors => [author_foo, author_bar])
       assert_equal [author_foo, author_bar], pipeline.authors
+    end
+
+    test "should parse pipeline materias" do
+      link = 'http://localhost:8153/go/api/pipelines/defaultPipeline/2.xml'
+      pipeline = GoApiClient::Pipeline.from(link)
+
+      assert_equal 1, pipeline.commits.size
+      assert_equal 1, pipeline.dependencies.size
+
     end
 
   end

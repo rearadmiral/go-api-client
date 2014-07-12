@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<pipeline name="deploy-pasty" counter="1022" label="1022">
+  <link rel="self" href="https://go.thoughtworks.com/go/api/pipelines/deploy-pasty/173834.xml"/>
+  <id><![CDATA[urn:x-go.studios.thoughtworks.com:job-id:deploy-pasty:1022]]></id>
+  <link rel="insertedAfter" href="https://go.thoughtworks.com/go/api/pipelines/deploy-pasty/173823.xml"/>
+  <scheduleTime>2014-07-07T10:44:32-07:00</scheduleTime>
+  <materials>
+    <material materialUri="https://go.thoughtworks.com/go/api/materials/108307.xml" type="DependencyMaterial" pipelineName="acceptance-cupcake" stageName="acceptance">
+      <modifications>
+        <changeset changesetUri="https://go.thoughtworks.com/go/api/stages/353017.xml">
+          <checkinTime>2014-07-07T10:43:05-07:00</checkinTime>
+          <revision>acceptance-cupcake/931/acceptance/1</revision>
+        </changeset>
+      </modifications>
+    </material>
+    <material materialUri="https://go.thoughtworks.com/go/api/materials/18170.xml" type="GitMaterial" url="https://studios-scm.thoughtworks.com/saas" branch="master">
+      <modifications>
+        <changeset changesetUri="https://go.thoughtworks.com/go/api/materials/18170/changeset/ec4365b7377988cddde6575364f0d2a9d2d8b37a.xml">
+          <user><![CDATA[smarker <bill.dephillips@gmail.com>]]></user>
+          <checkinTime>2014-07-03T14:08:55-07:00</checkinTime>
+          <revision><![CDATA[ec4365b7377988cddde6575364f0d2a9d2d8b37a]]></revision>
+          <message><![CDATA[upgrade eb_deployer to solve
+AWS::ElasticBeanstalk::Errors::OperationInProgressFailure error when
+concurrently deleting elasticbeanstalk versions]]></message>
+          <file name="Gemfile" action="modified"/>
+          <file name="Gemfile.lock" action="modified"/>
+        </changeset>
+      </modifications>
+    </material>
+  </materials>
+  <stages>
+    <stage href="https://go.thoughtworks.com/go/api/stages/353019.xml"/>
+    <stage href="https://go.thoughtworks.com/go/api/stages/353025.xml"/>
+    <stage href="https://go.thoughtworks.com/go/api/stages/353026.xml"/>
+  </stages>
+  <approvedBy><![CDATA[changes]]></approvedBy>
+</pipeline>

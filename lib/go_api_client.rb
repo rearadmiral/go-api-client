@@ -11,10 +11,12 @@ require 'go_api_client/pipeline'
 require 'go_api_client/stage'
 require 'go_api_client/job'
 require 'go_api_client/commit'
+require 'go_api_client/dependency_material'
 require 'go_api_client/user'
 
 
 module GoApiClient
+
   def self.runs(options)
     options = ({:protocol => 'http', :port => 8153, :username => nil, :password => nil, :latest_atom_entry_id => nil, :pipeline_name => 'defaultPipeline'}).merge(options)
 

@@ -3,11 +3,10 @@ module GoApiClient
     class Feed
       attr_accessor :feed_pages, :entries
 
-      PAGE_FETCH_LIMIT = 2
-
-      def initialize(atom_feed_url, last_entry_id=nil)
+      def initialize(atom_feed_url, last_entry_id=nil, page_fetch_limit=nil)
         @atom_feed_url = atom_feed_url
         @last_entry_id = last_entry_id
+        @page_fetch_limit = page_fetch_limit
       end
 
       def fetch!(http_fetcher = HttpFetcher.new)
@@ -18,11 +17,11 @@ module GoApiClient
         begin
           doc = Nokogiri::XML(http_fetcher.get_response_body(feed_url))
           pages_fetched += 1
-          if pages_fetched > PAGE_FETCH_LIMIT
+          if @page_fetch_limit && pages_fetched > @page_fetch_limit
             puts "=" * 100
             puts ""
-            puts "[GO WATCHDOG] not fetching past #{PAGE_FETCH_LIMIT} pages of the Go event feed."
-            puts "If there is no green build in those pages, Go Watchdog may not work properly."
+            puts "[GoApiClient] not fetching past #{page_fetch_limit} pages of the Go.CD event feed."
+            puts "If there is no green build in those pages, your app may not work properly."
             puts "Get your build green first!"
             puts ""
             puts "=" * 100

@@ -1,12 +1,18 @@
 require "bundler/gem_tasks"
 require 'rake/testtask'
 
+task :quiet do
+  ENV['QUIET'] = 'true'
+end
+
 desc "Run all tests"
 Rake::TestTask.new do |t|
    t.libs << "test"
    t.test_files = FileList['test/**/*test.rb']
    t.verbose = true
- end
+end
+
+task :test => :quiet
 
 desc "upload the gem to artifact repository"
 task :upload do

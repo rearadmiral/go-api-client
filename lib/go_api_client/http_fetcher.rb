@@ -12,7 +12,7 @@ module GoApiClient
     def get(url, options={})
       uri = URI.parse(url)
 
-      puts "[DEBUG] fetching #{url}"
+      puts "[DEBUG] fetching #{url}" unless ENV['QUIET']
 
       password = options[:password] || uri.password || @password
       username = options[:username] || uri.user     || @username

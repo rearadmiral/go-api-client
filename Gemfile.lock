@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    go_api_client (0.2.0)
+    go_cd_feed (1.0.0)
       nokogiri
 
 GEM
@@ -9,8 +9,10 @@ GEM
   specs:
     addressable (2.2.7)
     crack (0.3.1)
+    mini_portile (0.6.0)
     multi_json (1.2.0)
-    nokogiri (1.5.2)
+    nokogiri (1.6.2.1)
+      mini_portile (= 0.6.0)
     rake (0.9.2.2)
     simplecov (0.6.1)
       multi_json (~> 1.0)
@@ -25,7 +27,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  go_api_client!
+  go_cd_feed!
   rake
   simplecov
   test-unit
