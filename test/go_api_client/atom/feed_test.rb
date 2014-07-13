@@ -13,7 +13,12 @@ module GoApiClient
         assert_equal (25+4), feed.entries.count
       end
 
-      test "should stop at first page if entry id not specified" do
+      test "should stop after page limit if specified" do
+        feed = GoApiClient::Atom::Feed.new('https://go-server.example.com/go/api/pipelines/tlb/stages.xml', nil, 1).fetch!
+        assert_equal 25, feed.entries.count
+      end
+
+      test "should not stop until first page if entry id not specified" do
         stub_request(:get, "https://go-server.example.com/go/api/pipelines/tlb/stages.xml?before=7916973").to_return(:body => file_contents("pagination/stages_before_7916973.xml"))
 
         feed = GoApiClient::Atom::Feed.new('https://go-server.example.com/go/api/pipelines/tlb/stages.xml').fetch!
