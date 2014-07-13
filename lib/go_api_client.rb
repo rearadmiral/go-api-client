@@ -10,6 +10,7 @@ require 'go_api_client/atom'
 require 'go_api_client/pipeline'
 require 'go_api_client/stage'
 require 'go_api_client/job'
+require 'go_api_client/git_material'
 require 'go_api_client/commit'
 require 'go_api_client/dependency_material'
 require 'go_api_client/user'
@@ -24,7 +25,7 @@ module GoApiClient
 
     feed_url = "#{options[:protocol]}://#{options[:host]}:#{options[:port]}/go/api/pipelines/#{options[:pipeline_name]}/stages.xml"
 
-    feed = GoApiClient::Atom::Feed.new(feed_url, options[:latest_atom_entry_id])
+    feed = GoApiClient::Atom::Feed.new(feed_url, options[:latest_atom_entry_id], options[:page_fetch_limit])
     feed.fetch!(http_fetcher)
 
     pipelines = {}

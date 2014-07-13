@@ -3,8 +3,9 @@ require "test_helper"
 module GoApiClient
   class CommitTest < Test::Unit::TestCase
 
-    test "should parse a changeset xml node" do
-      doc = Nokogiri::XML.parse %q{<changeset changesetUri="http://localhost:8153/go/api/materials/1/changeset/9f77888d7a594699894a17f4d61fc9dfac3cfb74.xml">
+    test "should parse a material with changeset xml node" do
+      doc = Nokogiri::XML.parse %q{
+      <changeset changesetUri="http://localhost:8153/go/api/materials/1/changeset/9f77888d7a594699894a17f4d61fc9dfac3cfb74.xml">
         <bar>
           <revision>jhgasdfjkhgads</revision>
           <message>some message</message>

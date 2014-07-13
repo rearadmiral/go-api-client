@@ -16,7 +16,7 @@ module GoApiClient
       assert_equal 99, pipeline.counter
       assert_equal "defaultPipeline", pipeline.name
       assert_equal "http://localhost:8153/go/api/pipelines/defaultPipeline/1.xml", pipeline.url
-      assert_equal ["Update README", "Fixed build"], pipeline.commits.collect(&:message)
+      assert_equal ["Update README", "Fixed build"], pipeline.materials.map { |material| material.commits.collect(&:message) }.flatten
       assert_equal "urn:x-go.studios.thoughtworks.com:job-id:defaultPipeline:1", pipeline.identifier
       assert_equal Time.parse('2012-02-23 11:46:15 UTC'), pipeline.schedule_time
     end
@@ -35,7 +35,7 @@ module GoApiClient
       link = 'http://localhost:8153/go/api/pipelines/defaultPipeline/2.xml'
       pipeline = GoApiClient::Pipeline.from(link)
 
-      assert_equal 1, pipeline.commits.size
+      assert_equal 1, pipeline.materials.size
       assert_equal 1, pipeline.dependencies.size
 
     end

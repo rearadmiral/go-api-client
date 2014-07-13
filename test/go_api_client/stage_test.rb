@@ -38,7 +38,7 @@ module GoApiClient
 
       assert_equal "http://localhost:8153/go/api/stages/1.xml", stages.first.url
       assert_equal "http://localhost:8153/go/api/stages/2.xml", stages.last.url
-      
+
       assert_equal 1, stages.first.counter
       assert_equal 1, stages.last.counter
 
@@ -56,7 +56,7 @@ module GoApiClient
       assert_equal "Units", stages.first.name
       assert_equal "Acceptance", stages.last.name
 
-      assert_equal ["Update README", "Fixed build"], pipelines.first.commits.collect(&:message)
+      assert_equal ["Update README", "Fixed build"], pipelines.first.materials.map { |material| material.commits.collect(&:message) }.flatten
 
       assert_equal "http://localhost:8153/go/files/defaultPipeline/1/Units/1/Test/cruise-output/console.log", stages.first.jobs.first.console_log_url
       assert_equal "http://localhost:8153/go/files/defaultPipeline/1/Acceptance/1/Test/cruise-output/console.log", stages.last.jobs.first.console_log_url

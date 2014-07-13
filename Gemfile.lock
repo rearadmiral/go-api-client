@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    go_cd_feed (1.0.0)
+    go_cd_feed (1.1.0)
       nokogiri
 
 GEM
