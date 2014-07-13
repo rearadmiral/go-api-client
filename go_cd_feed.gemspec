@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = "go_cd_feed"
-  s.version     = '1.1.0'
+  s.version     = '1.1.1'
   s.authors     = ["Nikhil Mungel", "Ketan Padegaonkar", "Shishir Das", "Bill DePhillips"]
   s.email       = ["hyfather@gmail.com", "KetanPadegaonkar@gmail.com", "shishir.das@gmail.com", "bill.dephillips@gmail.com"]
   s.homepage    = "http://github.com/rearadmiral/go-api-client.git"
